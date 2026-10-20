@@ -16,6 +16,8 @@ def test_theme_application() -> None:
 
     apply_theme(widget, "light")
     assert "background-color: #f8fafc" in widget.styleSheet()
+    widget.deleteLater()
+    _APP.processEvents()
 
 
 def test_controls_defaults_and_get_config() -> None:
@@ -25,6 +27,8 @@ def test_controls_defaults_and_get_config() -> None:
     assert config.aspect_ratio_correction == 0.55
     assert config.charset == DEFAULT_CHARSETS["Standard"]
     assert config.color_mode == ColorMode.RGB
+    controls.deleteLater()
+    _APP.processEvents()
 
 
 def test_controls_set_config() -> None:
@@ -52,6 +56,8 @@ def test_controls_set_config() -> None:
     assert cfg.color_mode == ColorMode.MONOCHROME
     assert cfg.fg_color == (0, 255, 0)
     assert cfg.bg_color == (10, 10, 10)
+    controls.deleteLater()
+    _APP.processEvents()
 
 
 def test_controls_signals() -> None:
@@ -69,6 +75,8 @@ def test_controls_signals() -> None:
     controls._toggle_theme()
     assert len(themes) == 1
     assert themes[0] == "light"
+    controls.deleteLater()
+    _APP.processEvents()
 
 
 def test_mono_presets() -> None:
@@ -77,3 +85,5 @@ def test_mono_presets() -> None:
     cfg = controls.get_config()
     assert cfg.fg_color == (0, 255, 70)
     assert cfg.bg_color == (10, 15, 10)
+    controls.deleteLater()
+    _APP.processEvents()

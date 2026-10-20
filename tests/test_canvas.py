@@ -1,10 +1,11 @@
 """Unit tests for AsciiCanvasWidget."""
 
 import numpy as np
-from PySide6.QtGui import QColor, QPixmap
+from PIL import Image
+from PySide6.QtGui import QColor, QFontMetricsF, QPixmap
 from PySide6.QtWidgets import QApplication
 
-from src.core.ascii_converter import AsciiFrame
+from src.core.ascii_converter import AsciiConfig, AsciiConverter, AsciiFrame
 from src.ui.canvas import AsciiCanvasWidget
 
 # Ensure QApplication exists for headless test runs
@@ -63,3 +64,34 @@ def test_canvas_paint_rgb() -> None:
     pixmap = QPixmap(400, 300)
     canvas.render(pixmap)
     assert not pixmap.isNull()
+    canvas.deleteLater()
+    _APP.processEvents()
+
+
+def test_canvas_aspect_ratio_stability() -> None:
+    img = Image.new("RGB", (800, 600), color=(100, 100, 100))
+    canvas = AsciiCanvasWidget()
+    canvas.resize(800, 600)
+
+    ratios = []
+    for w in [30, 80, 150, 240]:
+        frame = AsciiConverter.convert(img, AsciiConfig(width=w))
+        canvas.set_frame(frame)
+        pixmap = QPixmap(800, 600)
+        canvas.render(pixmap)
+        assert not pixmap.isNull()
+
+        # Check font metrics grid ratio
+        metrics = QFontMetricsF(canvas._base_font)
+        cw = metrics.horizontalAdvance("M")
+        lh = metrics.lineSpacing()
+        rendered_ar = (frame.width * cw) / (frame.height * lh)
+        ratios.append(rendered_ar)
+
+    # All rendered aspect ratios should be nearly identical (within 5% deviation due to integer row counts)
+    base_ar = ratios[0]
+    for r in ratios[1:]:
+        assert abs(r - base_ar) / base_ar < 0.05
+
+    canvas.deleteLater()
+    _APP.processEvents()

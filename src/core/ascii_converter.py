@@ -125,7 +125,7 @@ class AsciiConverter:
 
         # Compute target dimensions
         target_w = max(1, config.width)
-        target_h = max(1, int(orig_h * (target_w / orig_w) * config.aspect_ratio_correction))
+        target_h = max(1, round(orig_h * (target_w / orig_w) * config.aspect_ratio_correction))
 
         # Downsample using OpenCV INTER_AREA for crisp character block downscaling
         small_rgb = cv2.resize(rgb, (target_w, target_h), interpolation=cv2.INTER_AREA)

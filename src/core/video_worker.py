@@ -127,7 +127,9 @@ class VideoWorker(QThread):
         with QMutexLocker(self._mutex):
             self._is_running = False
             self._is_playing = False
-        self.wait(1000)
+        if self.isRunning():
+            self.quit()
+            self.wait(2000)
         with QMutexLocker(self._mutex):
             if self._cap is not None:
                 self._cap.release()

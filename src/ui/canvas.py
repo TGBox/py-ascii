@@ -80,6 +80,7 @@ class AsciiCanvasWidget(QWidget):
         """Paints the ASCII frame or placeholder."""
         painter = QPainter(self)
         painter.setRenderHint(QPainter.RenderHint.TextAntialiasing, True)
+        painter.setRenderHint(QPainter.RenderHint.SmoothPixmapTransform, True)
 
         if not self._frame or self._frame.width == 0 or self._frame.height == 0:
             self._draw_placeholder(painter)
@@ -94,58 +95,45 @@ class AsciiCanvasWidget(QWidget):
         # Fill canvas background
         painter.fillRect(self.rect(), self._bg_color)
 
-        avail_w = max(10, self.width() - 16)
-        avail_h = max(10, self.height() - 16)
+        avail_w = max(10.0, float(self.width() - 16))
+        avail_h = max(10.0, float(self.height() - 16))
 
-        # Estimate font pixel size to fit dimensions
-        font = QFont(self._base_font)
-        if self._fit_to_window:
-            # Typical monospace aspect ratio: width is ~0.6 of height
-            est_h = avail_h / rows
-            est_w = avail_w / (cols * 0.6)
-            pixel_size = max(4, int(min(est_h, est_w) * self._zoom_factor))
-        else:
-            pixel_size = max(4, int(12 * self._zoom_factor))
-
-        font.setPixelSize(pixel_size)
-        metrics = QFontMetricsF(font)
+        # Use base monospace font metrics to calculate stable natural grid size
+        metrics = QFontMetricsF(self._base_font)
         char_w = metrics.horizontalAdvance("M")
         line_h = metrics.lineSpacing()
         ascent = metrics.ascent()
 
-        # Fine-tune pixel size if character width or height exceeds available bounds
+        grid_w = max(1.0, cols * char_w)
+        grid_h = max(1.0, rows * line_h)
+
         if self._fit_to_window:
-            total_w = cols * char_w
-            total_h = rows * line_h
-            if total_w > avail_w or total_h > avail_h:
-                scale_down = min(avail_w / max(1.0, total_w), avail_h / max(1.0, total_h))
-                pixel_size = max(4, int(pixel_size * scale_down))
-                font.setPixelSize(pixel_size)
-                metrics = QFontMetricsF(font)
-                char_w = metrics.horizontalAdvance("M")
-                line_h = metrics.lineSpacing()
-                ascent = metrics.ascent()
+            scale = min(avail_w / grid_w, avail_h / grid_h) * self._zoom_factor
+        else:
+            scale = self._zoom_factor
 
-        painter.setFont(font)
+        content_w = grid_w * scale
+        content_h = grid_h * scale
 
-        # Center the rendered ASCII grid
-        content_w = cols * char_w
-        content_h = rows * line_h
         start_x = max(8.0, (self.width() - content_w) / 2.0)
         start_y = max(8.0, (self.height() - content_h) / 2.0)
+
+        painter.save()
+        painter.translate(start_x, start_y)
+        painter.scale(scale, scale)
+        painter.setFont(self._base_font)
 
         # Draw rows
         if is_rgb and colors is not None:
             # RGB mode: Batch contiguous characters with same RGB color per line
             for r, line in enumerate(self._frame.chars):
-                base_y = start_y + r * line_h + ascent
+                base_y = r * line_h + ascent
                 row_colors = colors[r]
                 line_len = len(line)
 
                 c = 0
                 while c < line_len:
                     cur_r, cur_g, cur_b = row_colors[c]
-                    # Find span of characters sharing the exact same color
                     span_start = c
                     while (
                         c < line_len
@@ -157,13 +145,14 @@ class AsciiCanvasWidget(QWidget):
 
                     span_text = line[span_start:c]
                     painter.setPen(QColor(int(cur_r), int(cur_g), int(cur_b)))
-                    x_pos = start_x + span_start * char_w
+                    x_pos = span_start * char_w
                     painter.drawText(QPointF(x_pos, base_y), span_text)
         else:
             # Monochrome mode: Draw full line at once
             painter.setPen(self._fg_color)
             for r, line in enumerate(self._frame.chars):
-                base_y = start_y + r * line_h + ascent
-                painter.drawText(QPointF(start_x, base_y), line)
+                base_y = r * line_h + ascent
+                painter.drawText(QPointF(0.0, base_y), line)
 
+        painter.restore()
         painter.end()
