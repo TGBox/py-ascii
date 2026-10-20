@@ -6,13 +6,13 @@
 
 **Acceptance criteria:**
 
-- [ ] `pyproject.toml` enthält `numpy`, `opencv-python`, `pillow`, `imageio-ffmpeg` unter den Abhängigkeiten.
-- [ ] Die virtuelle Umgebung wird via `uv sync` aktualisiert und die Pakete lassen sich importieren.
+- [x] `pyproject.toml` enthält `numpy`, `opencv-python`, `pillow`, `imageio-ffmpeg` unter den Abhängigkeiten.
+- [x] Die virtuelle Umgebung wird via `uv sync` aktualisiert und die Pakete lassen sich importieren.
 
 **Verification:**
 
-- [ ] Tests pass: `uv run python -c "import cv2, numpy, PIL, imageio_ffmpeg, PySide6; print('OK')"`
-- [ ] Build succeeds: `uv run ruff check`
+- [x] Tests pass: `uv run python -c "import cv2, numpy, PIL, imageio_ffmpeg, PySide6; print('OK')"`
+- [x] Build succeeds: `uv run ruff check`
 
 **Dependencies:** None
 
@@ -31,15 +31,15 @@
 
 **Acceptance criteria:**
 
-- [ ] Datenklassen `AsciiConfig` (Breite, Seitenverhältnis, Zeichensatz, Kontrast, Helligkeit, Farbmodus) und `AsciiFrame` (Zeichenmatrix, Farbdaten, Plaintext).
-- [ ] Schnelle NumPy-basierte Vektorisierung für Graustufen- und Vollfarb-Umwandlung.
-- [ ] Zuverlässige Berücksichtigung von Zeichen-Seitenverhältnissen (Monospace).
-- [ ] Ausführliche Unit-Tests in `tests/test_ascii_converter.py`.
+- [x] Datenklassen `AsciiConfig` (Breite, Seitenverhältnis, Zeichensatz, Kontrast, Helligkeit, Farbmodus) und `AsciiFrame` (Zeichenmatrix, Farbdaten, Plaintext).
+- [x] Schnelle NumPy-basierte Vektorisierung für Graustufen- und Vollfarb-Umwandlung.
+- [x] Zuverlässige Berücksichtigung von Zeichen-Seitenverhältnissen (Monospace).
+- [x] Ausführliche Unit-Tests in `tests/test_ascii_converter.py`.
 
 **Verification:**
 
-- [ ] Tests pass: `uv run pytest tests/test_ascii_converter.py`
-- [ ] Build succeeds: `uv run ruff check src/core/`
+- [x] Tests pass: `uv run pytest tests/test_ascii_converter.py`
+- [x] Build succeeds: `uv run ruff check src/core/`
 
 **Dependencies:** Task 1
 
@@ -55,8 +55,8 @@
 
 ## Checkpoint: Foundation
 
-- [ ] `uv run pytest` läuft fehlerfrei durch.
-- [ ] Die Core-Engine konvertiert Bilder zuverlässig in Millisekunden.
+- [x] `uv run pytest` läuft fehlerfrei durch.
+- [x] Die Core-Engine konvertiert Bilder zuverlässig in Millisekunden.
 
 ---
 
@@ -66,15 +66,15 @@
 
 **Acceptance criteria:**
 
-- [ ] `AsciiCanvasWidget` rendert Monochrom- und RGB-Zeichen sauber mit Monospace-Schriftart.
-- [ ] Hintergrund- und Textfarben im Monochrom-Modus frei konfigurierbar (z. B. Matrix-Grün).
-- [ ] Automatisches Zentrieren und Skalieren bei Größenänderungen des Fensters.
-- [ ] Zoom-Faktor und Ansichtsoptionen (Originalgröße / Einpassen).
+- [x] `AsciiCanvasWidget` rendert Monochrom- und RGB-Zeichen sauber mit Monospace-Schriftart.
+- [x] Hintergrund- und Textfarben im Monochrom-Modus frei konfigurierbar (z. B. Matrix-Grün).
+- [x] Automatisches Zentrieren und Skalieren bei Größenänderungen des Fensters.
+- [x] Zoom-Faktor und Ansichtsoptionen (Originalgröße / Einpassen).
 
 **Verification:**
 
-- [ ] Tests pass: `uv run pytest tests/test_canvas.py`
-- [ ] Build succeeds: `uv run ruff check src/ui/canvas.py`
+- [x] Tests pass: `uv run pytest tests/test_canvas.py`
+- [x] Build succeeds: `uv run ruff check src/ui/canvas.py`
 
 **Dependencies:** Task 2
 
@@ -94,15 +94,15 @@
 
 **Acceptance criteria:**
 
-- [ ] Schieberegler für Auflösung (Spalten), Seitenverhältnis-Korrektur, Helligkeit und Kontrast mit Werteanzeige.
-- [ ] Dropdown für Zeichensatz-Presets (Standard, Dicht, Blöcke) und Eingabefeld für eigenen Zeichensatz.
-- [ ] Farbmodus-Umschalter (Vollfarb-RGB vs. Monochrom) mit Farbwahl-Dialogen.
-- [ ] Dark- und Light-Theme QSS-Stylesheets gemäß Desktop-Konventionen.
+- [x] Schieberegler für Auflösung (Spalten), Seitenverhältnis-Korrektur, Helligkeit und Kontrast mit Werteanzeige.
+- [x] Dropdown für Zeichensatz-Presets (Standard, Dicht, Blöcke) und Eingabefeld für eigenen Zeichensatz.
+- [x] Farbmodus-Umschalter (Vollfarb-RGB vs. Monochrom) mit Farbwahl-Dialogen.
+- [x] Dark- und Light-Theme QSS-Stylesheets gemäß Desktop-Konventionen.
 
 **Verification:**
 
-- [ ] Tests pass: `uv run pytest tests/test_controls.py`
-- [ ] Build succeeds: `uv run ruff check src/ui/`
+- [x] Tests pass: `uv run pytest tests/test_controls.py`
+- [x] Build succeeds: `uv run ruff check src/ui/`
 
 **Dependencies:** Task 3
 
@@ -122,15 +122,15 @@
 
 **Acceptance criteria:**
 
-- [ ] Bilder können via Menü, Button oder Drag-and-Drop geladen werden.
-- [ ] Änderungen an den Reglern im Einstellungs-Panel aktualisieren das Bild in Echtzeit.
-- [ ] Vollbildmodus via Taste `F11` umschaltbar.
-- [ ] Fenstergröße und -position werden beim Beenden in `QSettings` gesichert und beim Neustart wiederhergestellt.
+- [x] Bilder können via Menü, Button oder Drag-and-Drop geladen werden.
+- [x] Änderungen an den Reglern im Einstellungs-Panel aktualisieren das Bild in Echtzeit.
+- [x] Vollbildmodus via Taste `F11` umschaltbar.
+- [x] Fenstergröße und -position werden beim Beenden in `QSettings` gesichert und beim Neustart wiederhergestellt.
 
 **Verification:**
 
-- [ ] Tests pass: `uv run pytest tests/test_main_window.py`
-- [ ] Manual check: Starten via `uv run py-ascii`, Bild hineinziehen, Parameter testen.
+- [x] Tests pass: `uv run pytest tests/test_main_window.py`
+- [x] Manual check: Starten via `uv run py-ascii`, Bild hineinziehen, Parameter testen.
 
 **Dependencies:** Task 4
 
@@ -146,8 +146,8 @@
 
 ## Checkpoint: Bild-Workflow funktionsfähig
 
-- [ ] Bilder lassen sich öffnen, interaktiv in ASCII verwandeln und im Fenster / Vollbild betrachten.
-- [ ] Alle Tests bestehen.
+- [x] Bilder lassen sich öffnen, interaktiv in ASCII verwandeln und im Fenster / Vollbild betrachten.
+- [x] Alle Tests bestehen.
 
 ---
 
@@ -157,15 +157,15 @@
 
 **Acceptance criteria:**
 
-- [ ] `VideoWorker` liest Video-Dateien (`.mp4`, `.avi`, `.mov`, `.mkv`) über OpenCV ein.
-- [ ] Unterstützung für Play, Pause, Stop, Seek (Springen zu Frame) und Loop-Wiedergabe.
-- [ ] Timer-gesteuerte Frame-Ausgabe entsprechend der Original-FPS des Videos.
-- [ ] Qt-Signale für `frame_ready(AsciiFrame)`, `progress_changed(int, int)` und `status_changed(bool)`.
+- [x] `VideoWorker` liest Video-Dateien (`.mp4`, `.avi`, `.mov`, `.mkv`) über OpenCV ein.
+- [x] Unterstützung für Play, Pause, Stop, Seek (Springen zu Frame) und Loop-Wiedergabe.
+- [x] Timer-gesteuerte Frame-Ausgabe entsprechend der Original-FPS des Videos.
+- [x] Qt-Signale für `frame_ready(AsciiFrame)`, `progress_changed(int, int)` und `status_changed(bool)`.
 
 **Verification:**
 
-- [ ] Tests pass: `uv run pytest tests/test_video_worker.py`
-- [ ] Build succeeds: `uv run ruff check src/core/video_worker.py`
+- [x] Tests pass: `uv run pytest tests/test_video_worker.py`
+- [x] Build succeeds: `uv run ruff check src/core/video_worker.py`
 
 **Dependencies:** Task 2
 
@@ -184,15 +184,15 @@
 
 **Acceptance criteria:**
 
-- [ ] Steuerungsleiste erscheint/aktiviert sich automatisch beim Laden einer Videodatei.
-- [ ] Schieberegler erlaubt ruckelfreies Vor- und Zurückspulen (Scrubben).
-- [ ] Play/Pause-Button mit Zustandssynchronisation und Leertasten-Shortcut.
-- [ ] Nahtlose Anpassung der ASCII-Einstellungen während der laufenden Videowiedergabe.
+- [x] Steuerungsleiste erscheint/aktiviert sich automatisch beim Laden einer Videodatei.
+- [x] Schieberegler erlaubt ruckelfreies Vor- und Zurückspulen (Scrubben).
+- [x] Play/Pause-Button mit Zustandssynchronisation und Leertasten-Shortcut.
+- [x] Nahtlose Anpassung der ASCII-Einstellungen während der laufenden Videowiedergabe.
 
 **Verification:**
 
-- [ ] Tests pass: `uv run pytest tests/test_video_ui.py`
-- [ ] Manual check: Videodatei laden, abspielen und durch die Timeline navigieren.
+- [x] Tests pass: `uv run pytest tests/test_video_ui.py`
+- [x] Manual check: Videodatei laden, abspielen und durch die Timeline navigieren.
 
 **Dependencies:** Task 5, Task 6
 
@@ -208,8 +208,8 @@
 
 ## Checkpoint: Video-Wiedergabe flüssig
 
-- [ ] Geladene Videos laufen flüssig im ASCII-Canvas.
-- [ ] GUI friert beim Abspielen und Scrubben zu keinem Zeitpunkt ein.
+- [x] Geladene Videos laufen flüssig im ASCII-Canvas.
+- [x] GUI friert beim Abspielen und Scrubben zu keinem Zeitpunkt ein.
 
 ---
 
@@ -219,15 +219,15 @@
 
 **Acceptance criteria:**
 
-- [ ] Bildexport: Speichern als Plain-Text `.txt` oder als gerastertes `.png` mit wählbaren Farben.
-- [ ] Videoexport: Rendern der ASCII-Frames in ein `.mp4`-Video und Muxen der Original-Audiospur via `imageio-ffmpeg`.
-- [ ] GIF-Export für animierte Clips.
-- [ ] Modaler Fortschrittsdialog mit Prozentanzeige und "Abbrechen"-Schaltfläche.
+- [x] Bildexport: Speichern als Plain-Text `.txt` oder als gerastertes `.png` mit wählbaren Farben.
+- [x] Videoexport: Rendern der ASCII-Frames in ein `.mp4`-Video und Muxen der Original-Audiospur via `imageio-ffmpeg`.
+- [x] GIF-Export für animierte Clips.
+- [x] Modaler Fortschrittsdialog mit Prozentanzeige und "Abbrechen"-Schaltfläche.
 
 **Verification:**
 
-- [ ] Tests pass: `uv run pytest tests/test_exporter.py`
-- [ ] Build succeeds: `uv run ruff check src/core/exporter.py`
+- [x] Tests pass: `uv run pytest tests/test_exporter.py`
+- [x] Build succeeds: `uv run ruff check src/core/exporter.py`
 
 **Dependencies:** Task 7
 
@@ -247,16 +247,16 @@
 
 **Acceptance criteria:**
 
-- [ ] Aussagekräftige deutsche Fehlermeldungen bei ungültigen Dateien oder Ladefehlern.
-- [ ] Tastaturkürzel intuitiv benutzbar und in Tooltips/Menüs dokumentiert.
-- [ ] Keine Ruff-Linter- oder Formatierungsfehler im gesamten Projekt.
-- [ ] Alle Pytest-Tests laufen erfolgreich durch.
+- [x] Aussagekräftige deutsche Fehlermeldungen bei ungültigen Dateien oder Ladefehlern.
+- [x] Tastaturkürzel intuitiv benutzbar und in Tooltips/Menüs dokumentiert.
+- [x] Keine Ruff-Linter- oder Formatierungsfehler im gesamten Projekt.
+- [x] Alle Pytest-Tests laufen erfolgreich durch.
 
 **Verification:**
 
-- [ ] Tests pass: `uv run pytest`
-- [ ] Lint pass: `uv run ruff check .`
-- [ ] Format pass: `uv run ruff format --check .`
+- [x] Tests pass: `uv run pytest`
+- [x] Lint pass: `uv run ruff check .`
+- [x] Format pass: `uv run ruff format --check .`
 
 **Dependencies:** Task 8
 
@@ -272,5 +272,5 @@
 
 ## Checkpoint: Vollständige Anwendung
 
-- [ ] Gesamte Testsuite ist grün.
-- [ ] Vollständiger End-to-End Test für Bild- und Video-Workflow erfolgreich.
+- [x] Gesamte Testsuite ist grün.
+- [x] Vollständiger End-to-End Test für Bild- und Video-Workflow erfolgreich.

@@ -1,16 +1,21 @@
 import sys
+
 import PyInstaller.__main__
 
 
 def main() -> None:
-    args = sys.argv[1:] if len(sys.argv) > 1 else [
-        "--noconfirm",
-        "--onedir",
-        "--windowed",
-        "src/main.py",
-        "--name",
-        "py-ascii",
-    ]
+    args = (
+        sys.argv[1:]
+        if len(sys.argv) > 1
+        else [
+            "--noconfirm",
+            "--onedir",
+            "--windowed",
+            "src/main.py",
+            "--name",
+            "py-ascii",
+        ]
+    )
     PyInstaller.__main__.run(args)
 
 

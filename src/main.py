@@ -1,22 +1,22 @@
+"""Application entrypoint for py-ascii."""
+
 import sys
-from PySide6.QtWidgets import QApplication, QMainWindow, QLabel
-from PySide6.QtCore import Qt
 
+from PySide6.QtWidgets import QApplication
 
-class MainWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.setWindowTitle("py-ascii")
-        self.resize(800, 600)
-        label = QLabel("Hallo aus py-ascii!", alignment=Qt.AlignmentFlag.AlignCenter)
-        self.setCentralWidget(label)
+from src.ui.main_window import MainWindow
 
 
 def main() -> None:
+    """Initializes Qt application and launches the main window."""
     app = QApplication(sys.argv)
+    app.setApplicationName("py-ascii")
+    app.setOrganizationName("py-ascii")
+
     window = MainWindow()
     window.show()
     sys.exit(app.exec())
+
 
 if __name__ == "__main__":
     main()

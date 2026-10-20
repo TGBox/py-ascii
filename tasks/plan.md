@@ -18,43 +18,43 @@ Entwicklung einer modernen, performanten Desktop-Anwendung auf Basis von PySide6
 
 ### Phase 1: Foundation & Core Engine
 
-- [ ] **Task 1: Abhängigkeiten & Projekt-Setup**: Installation von `numpy`, `opencv-python`, `pillow`, `imageio-ffmpeg` via `uv` und Konfiguration der Testumgebung.
-- [ ] **Task 2: Vektorisierte ASCII-Engine**: Implementierung von `AsciiConfig`, `AsciiFrame` und `AsciiConverter` mit NumPy-Vektorisierung und Unit-Tests.
+- [x] **Task 1: Abhängigkeiten & Projekt-Setup**: Installation von `numpy`, `opencv-python`, `pillow`, `imageio-ffmpeg` via `uv` und Konfiguration der Testumgebung.
+- [x] **Task 2: Vektorisierte ASCII-Engine**: Implementierung von `AsciiConfig`, `AsciiFrame` und `AsciiConverter` mit NumPy-Vektorisierung und Unit-Tests.
 
 ### Checkpoint: Foundation
 
-- [ ] Alle Unit-Tests für die ASCII-Konvertierung bestehen (`uv run pytest`).
-- [ ] Konvertierungs-Performance < 5ms pro Frame bei Standard-Terminalgröße.
+- [x] Alle Unit-Tests für die ASCII-Konvertierung bestehen (`uv run pytest`).
+- [x] Konvertierungs-Performance < 5ms pro Frame bei Standard-Terminalgröße.
 
 ### Phase 2: Canvas & Bild-Workflow
 
-- [ ] **Task 3: Performantes `AsciiCanvasWidget`**: `QPainter`-basierter Zeichenbereich mit Font-Caching, Vollfarb- und Monochrom-Modus sowie Auto-Fit.
-- [ ] **Task 4: Einstellungs-Panel & Themes**: Sidebar mit Schiebereglern (Auflösung, Seitenverhältnis, Kontrast, Helligkeit), Zeichensatz-Auswahl, Farbwähler und Dark/Light-Theme.
-- [ ] **Task 5: Hauptfenster & Bild-Pipeline**: Integration von Drag-and-Drop, Dateidialog, Menüleiste, F11-Vollbild und `QSettings`-Persistenz für Einzelbilder.
+- [x] **Task 3: Performantes `AsciiCanvasWidget`**: `QPainter`-basierter Zeichenbereich mit Font-Caching, Vollfarb- und Monochrom-Modus sowie Auto-Fit.
+- [x] **Task 4: Einstellungs-Panel & Themes**: Sidebar mit Schiebereglern (Auflösung, Seitenverhältnis, Kontrast, Helligkeit), Zeichensatz-Auswahl, Farbwähler und Dark/Light-Theme.
+- [x] **Task 5: Hauptfenster & Bild-Pipeline**: Integration von Drag-and-Drop, Dateidialog, Menüleiste, F11-Vollbild und `QSettings`-Persistenz für Einzelbilder.
 
 ### Checkpoint: Bild-Workflow funktionsfähig
 
-- [ ] Bilder können geöffnet, angepasst und verzögerungsfrei in der GUI dargestellt werden.
-- [ ] Dark- und Light-Theme funktionieren nahtlos.
+- [x] Bilder können geöffnet, angepasst und verzögerungsfrei in der GUI dargestellt werden.
+- [x] Dark- und Light-Theme funktionieren nahtlos.
 
 ### Phase 3: Video-Pipeline & Player
 
-- [ ] **Task 6: Asynchroner `VideoWorker`**: `QThread`-basierter Frame-Grabber mit OpenCV für Play, Pause, Seek und Frame-Rate-Steuerung.
-- [ ] **Task 7: Video-Player-Steuerung & Timeline**: Scrubber-Slider, Play/Pause-Buttons, Zeitanzeige und synchrone Frame-Aktualisierung im Canvas.
+- [x] **Task 6: Asynchroner `VideoWorker`**: `QThread`-basierter Frame-Grabber mit OpenCV für Play, Pause, Seek und Frame-Rate-Steuerung.
+- [x] **Task 7: Video-Player-Steuerung & Timeline**: Scrubber-Slider, Play/Pause-Buttons, Zeitanzeige und synchrone Frame-Aktualisierung im Canvas.
 
 ### Checkpoint: Video-Wiedergabe flüssig
 
-- [ ] Videos lassen sich flüssig abspielen und vor-/zurückspulen, ohne dass die GUI blockiert.
+- [x] Videos lassen sich flüssig abspielen und vor-/zurückspulen, ohne dass die GUI blockiert.
 
 ### Phase 4: Export-System & Polish
 
-- [ ] **Task 8: Export-Engine & Dialoge**: Bildexport (`.txt`, `.png`), Videoexport (`.mp4` mit Audio via `imageio-ffmpeg`, `.gif`) und Fortschrittsdialog.
-- [ ] **Task 9: Fehlerbehandlung, Shortcuts & Feinschliff**: Deutsche Lokalisierung, Tastaturkürzel (F11, Leertaste für Play/Pause), Edge-Case-Absicherung und End-to-End-Tests.
+- [x] **Task 8: Export-Engine & Dialoge**: Bildexport (`.txt`, `.png`), Videoexport (`.mp4` mit Audio via `imageio-ffmpeg`, `.gif`) und Fortschrittsdialog.
+- [x] **Task 9: Fehlerbehandlung, Shortcuts & Feinschliff**: Deutsche Lokalisierung, Tastaturkürzel (F11, Leertaste für Play/Pause), Edge-Case-Absicherung und End-to-End-Tests.
 
 ### Checkpoint: Vollständige Anwendung
 
-- [ ] Alle Tests (`pytest`, `ruff`) bestehen grün.
-- [ ] End-to-End-Flow für Bilder und Videos inklusive Export erfolgreich verifiziert.
+- [x] Alle Tests (`pytest`, `ruff`) bestehen grün.
+- [x] End-to-End-Flow für Bilder und Videos inklusive Export erfolgreich verifiziert.
 
 ---
 
